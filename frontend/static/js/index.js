@@ -1,6 +1,6 @@
-import Accueil from "./views/Accueil";
-import Liste from "./views/Liste";
-import Specifique from "./views/Specifique";
+import Accueil from "./views/Accueil.js";
+import Liste from "./views/Liste.js";
+import Specifique from "./views/Specifique.js";
 
 const pathToRegex = (path) => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
