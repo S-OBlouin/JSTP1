@@ -7,6 +7,8 @@ export default class extends AbstractView {
   }
 
   async getHtml() {
-    return `<h1>Bienvenue!</h1>`;
+    return `<div class="container p-3">
+              <h1>Bienvenue!</h1>
+            </div>`;
   }
 }

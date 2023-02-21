@@ -7,6 +7,13 @@ export default class extends AbstractView {
   }
 
   async getHtml() {
-    return `<h1>Liste</h1>`;
+    return `<div class="container p-3">
+              <h1>Observations récentes</h1>
+              <div>
+                <table class="table table-striped table-bordered">
+                  
+                </table>
+              </div>
+            </div>`;
   }
 }
