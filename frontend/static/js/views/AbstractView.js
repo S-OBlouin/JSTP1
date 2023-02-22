@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export default class {
   constructor(params) {
     this.params = params;
@@ -8,9 +6,9 @@ export default class {
     document.title = title;
   }
 
-  async getDataListe() {
-    const axios = require("axios");
-    const response = await axios.get("data.json");
+  async getData() {
+    const result = await fetch("http://localhost:8081/api/file", { method: "POST" });
+    return await result.json();
   }
 
   async getHtml() {

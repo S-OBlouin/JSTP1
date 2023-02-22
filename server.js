@@ -10,11 +10,28 @@ app.get("/*", function (req, res) {
   res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
 });
 
+app.post("/api/file", async function (req, res) {
+  const data = await sendJson();
+  res.status(Object.keys(data).length === 0 ? 500 : 200).json(data);
+});
+
+async function sendJson() {
+  if (!fs.existsSync("data.json")) {
+    await getData();
+  }
+  try {
+    const data = await fs.readFileSync("data.json");
+    return JSON.parse(data);
+  } catch (error) {
+    return {};
+  }
+}
+
 async function getData() {
   const config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: " https://api.ebird.org/v2/data/obs/CA-QC/recent?maxResults=20",
+    url: " https://api.ebird.org/v2/data/obs/CA-QC/recent?maxResults=50",
     headers: {
       "X-eBirdApiToken": "8l2m2jfka6qm",
     },
