@@ -9,12 +9,12 @@ app.use("/static", express.static(path.resolve(__dirname, "frontend", "static"))
 app.get("/*", function (req, res) {
   res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
 });
-
+// endpoint pour lire les datas
 app.post("/api/file", async function (req, res) {
   const data = await sendJson();
   res.status(Object.keys(data).length === 0 ? 500 : 200).json(data);
 });
-
+// si le dossier data.json n'existe pas, appelle getData pour avoire les données ensuite lie les données pour les envoyer aux vues
 async function sendJson() {
   if (!fs.existsSync("data.json")) {
     await getData();
@@ -26,7 +26,7 @@ async function sendJson() {
     return {};
   }
 }
-
+// va chercher les données pour les observations récentes du Québec dans L'API et écrit dans data.json
 async function getData() {
   const config = {
     method: "get",
@@ -46,5 +46,5 @@ async function getData() {
   }
 }
 
-// getData();
+getData();
 app.listen(8081, () => console.log("server running..."));

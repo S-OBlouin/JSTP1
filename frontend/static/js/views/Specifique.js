@@ -3,10 +3,11 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle("Specifique");
+    this.setTitle("Aléatoire");
   }
 
   async getHtml() {
+    //fetch les données de data.json, choisi aléatoirement un des objets et print le html avec les données.
     let result = await this.getData();
     result = result[Math.floor(Math.random() * result.length)];
     return `<div class="container p-3">
@@ -19,7 +20,8 @@ export default class extends AbstractView {
                 <p class="card-text">Dernière observation : ${result.obsDt}</p>
                 <p class="card-text">Individu.s apperçu : ${result.howMany ? result.howMany : "Non défini"}</p>
               </div>
-             </div>
+              </div>
+              <a href="/specifique" class="btn btn-outline-success mt-2" data-link>Aléatoire</button>
            </div>`;
   }
 }

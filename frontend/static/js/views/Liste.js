@@ -7,6 +7,7 @@ export default class extends AbstractView {
   }
 
   async getHtml() {
+    //fetch les données de data.json et print le html avec les données.
     const result = await this.getData();
     return `<div class="container p-3">
               <h1>Détail d'un oiseau aléatoire</h1>
